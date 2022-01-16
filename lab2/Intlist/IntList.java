@@ -83,9 +83,22 @@ public class IntList {
       if (A == null) {
         return B;
       }
-      A.rest = dcatenate(A.rest, B);
+      IntList T = A;
+      while (T.rest != null) {
+        T = T.rest;
+      }
+      T.rest = B;
       return A;
     }
+
+  // recursive solution
+  // public static IntList dcatenate(IntList A, IntList B) {
+  //   if (A == null) {
+  //     return B;
+  //   }
+  //   A.rest = dcatenate(A.rest, B);
+  //   return A;
+  // }
 
   /**
      * Returns a list consisting of the elements of A followed by the
@@ -95,9 +108,25 @@ public class IntList {
       if (A == null) {
         return B;
       }
-      return new IntList(A.first, catenate(A.rest, B));
+      IntList res = new IntList(A.first, null);
+      IntList ptr = res;
+      A = A.rest;
+      while (A != null) {
+        ptr.rest = new IntList(A.first, null);
+        ptr = ptr.rest;
+        A = A.rest;
+      }
+      ptr.rest = B;
+      return res;
     }
 
+  //  recursive solution
+  // public static IntList catenate(IntList A, IntList B) {
+  //   if (A == null) {
+  //     return B;
+  //   }
+  //   return new IntList(A.first, catenate(A.rest, B));
+  // }
   public static void main(String[] args) {
     final IntList A = of(1, 2, 3);
     final IntList B = of(4, 5, 6);
