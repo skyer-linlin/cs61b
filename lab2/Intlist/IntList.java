@@ -79,21 +79,34 @@ public class IntList {
      * Returns a list consisting of the elements of A followed by the
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
-
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+      if (A.rest == null) {
+        A.rest = B;
+        return A;
+      }
+      dcatenate(A.rest, B);
+      return A;
     }
 
-    /**
+  /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+      if (A.rest == null) {
+        return new IntList(A.first, B);
+      }
+      return new IntList(A.first, catenate(A.rest, B));
     }
 
+  public static void main(String[] args) {
+    final IntList A = of(1, 2, 3);
+    final IntList B = of(4, 5, 6);
+
+    System.out.println("B = " + B);
+    System.out.println(dcatenate(A, B));
+    System.out.println("A = " + A);
+  }
 
 
 
