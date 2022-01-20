@@ -7,7 +7,8 @@
  */
 public class Palindrome {
   public Deque<Character> wordToDeque(String word) {
-    final Deque<Character> deque = new LinkedListDeque<>();
+    // final Deque<Character> deque = new LinkedListDeque<>();
+    final Deque<Character> deque = new ArrayDeque<>();
     if (word == null) {
       return deque;
     }

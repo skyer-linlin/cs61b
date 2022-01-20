@@ -18,6 +18,16 @@ public class TestPalindrome {
   }
 
   @Test
+  public void testWordToDequeLong() {
+    Deque d = palindrome.wordToDeque("pneumonoultramicroscopicsilicovolcanoconiosis");
+    String actual = "";
+    for (int i = 0; i < "pneumonoultramicroscopicsilicovolcanoconiosis".length(); i++) {
+      actual += d.removeFirst();
+    }
+    assertEquals("pneumonoultramicroscopicsilicovolcanoconiosis", actual);
+  }
+
+  @Test
   public void testIsPalindrome() {
     assertTrue(palindrome.isPalindrome("noon"));
     assertTrue(palindrome.isPalindrome("racecar"));

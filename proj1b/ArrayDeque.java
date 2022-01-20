@@ -5,7 +5,7 @@
  * @date 2022/1/17 22:21
  * @since
  */
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
 
   private T[] items;
   private int size;
@@ -40,6 +40,7 @@ public class ArrayDeque<T> {
 
   }
 
+  @Override
   public void addFirst(T item) {
     if (item == null) {
       return;
@@ -74,6 +75,7 @@ public class ArrayDeque<T> {
     return (nextLastIndex - size - 1 + 2 * items.length) % items.length;
   }
 
+  @Override
   public void addLast(T item) {
     if (item == null) {
       return;
@@ -91,14 +93,17 @@ public class ArrayDeque<T> {
     return (nextFirstIndex + size + 1) % items.length;
   }
 
+  @Override
   public boolean isEmpty() {
     return size == 0;
   }
 
+  @Override
   public int size() {
     return size;
   }
 
+  @Override
   public void printDeque() {
     int ptr = reIndex(nextFirstIndex + 1);
     for (int i = 0; i < size; i++) {
@@ -107,6 +112,7 @@ public class ArrayDeque<T> {
     System.out.println();
   }
 
+  @Override
   public T removeFirst() {
     final int index = (nextFirstIndex + 1 + items.length) % items.length;
     final T ans = items[index];
@@ -141,6 +147,7 @@ public class ArrayDeque<T> {
     nextFirstIndex = getNextFirstIndex();
   }
 
+  @Override
   public T removeLast() {
     final int index = (nextLastIndex - 1 + items.length) % items.length;
     final T ans = items[index];
@@ -153,6 +160,7 @@ public class ArrayDeque<T> {
     return ans;
   }
 
+  @Override
   public T get(int index) {
     if (index < 0 || index > items.length || index >= size) {
       return null;
