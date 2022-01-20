@@ -69,7 +69,6 @@ public class ArrayDeque<T> {
   }
 
   private int getNextFirstIndex() {
-    // todo 头指针和尾指针相遇,说明数组满了,在添加新的元素空间不够时候扩容
     // 完成扩容部分
     return (nextLastIndex - size - 1 + 2 * items.length) % items.length;
   }
@@ -108,6 +107,9 @@ public class ArrayDeque<T> {
   }
 
   public T removeFirst() {
+    if (size == 0) {
+      return null;
+    }
     final int index = (nextFirstIndex + 1 + items.length) % items.length;
     final T ans = items[index];
     items[index] = null;
@@ -142,6 +144,9 @@ public class ArrayDeque<T> {
   }
 
   public T removeLast() {
+    if (size == 0) {
+      return null;
+    }
     final int index = (nextLastIndex - 1 + items.length) % items.length;
     final T ans = items[index];
     items[index] = null;
@@ -157,7 +162,7 @@ public class ArrayDeque<T> {
     if (index < 0 || index > items.length || index >= size) {
       return null;
     }
-    return items[reIndex(nextFirstIndex + index)];
+    return items[reIndex(nextFirstIndex + 1 + index)];
   }
 
   private int reIndex(int index) {

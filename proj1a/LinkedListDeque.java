@@ -24,45 +24,6 @@ public class LinkedListDeque<T> {
     sentinel.prev = sentinel;
   }
 
-  public static void main(String[] args) {
-    final LinkedListDeque<Integer> deque = new LinkedListDeque<>();
-    deque.printDeque();
-
-    deque.addFirst(3);
-    deque.printDeque();
-
-    deque.addFirst(2);
-    deque.printDeque();
-
-    deque.addFirst(1);
-    deque.printDeque();
-
-    deque.addLast(4);
-    deque.printDeque();
-
-    deque.addLast(5);
-    deque.printDeque();
-
-    deque.removeFirst();
-    deque.printDeque();
-
-    deque.removeLast();
-    deque.printDeque();
-
-    System.out.println("deque.get(2) = " + deque.get(2));
-
-    System.out.println("deque.getRecursive(1) = " + deque.getRecursive(1));
-
-    deque.removeLast();
-    deque.removeLast();
-
-    deque.printDeque();
-    deque.removeLast();
-
-    deque.printDeque();
-
-  }
-
   public void addFirst(T item) {
     if (item == null) {
       return;
@@ -160,7 +121,7 @@ public class LinkedListDeque<T> {
     return getRecursive(index - 1, node.next);
   }
 
-  static class Node<T> {
+  private static class Node<T> {
     private Node<T> prev;
     private T item;
     private Node<T> next;
